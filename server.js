@@ -24,6 +24,7 @@ app.get('/', (req, res) => {
 // Rota para enviar mensagens
 app.post('/enviar-mensagens', async (req, res) => {
   try {
+    console.log(req.body);
     const { clientes, mensagem } = req.body;
     
     if (!clientes || !Array.isArray(clientes)) {
