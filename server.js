@@ -1,12 +1,20 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const fetch = require('node-fetch');
+const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+
 // Middleware para parsear JSON
 app.use(bodyParser.json());
+
+app.use(cors({
+  origin: '*', // Permite todas as origens (em produção, especifique seus domínios)
+  methods: ['GET', 'POST', 'OPTIONS'], // Métodos permitidos
+  allowedHeaders: ['Content-Type', 'Authorization'] // Cabeçalhos permitidos
+}));
 
 // Token de autorização da API GZAPPY
 const API_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJsaWNfaW5zdGFuY2VfaWQiOiJMUDFXSioqKioqKioqKioqKioqVzZRMEgiLCJleHBpcmVzX2F0IjoiMjAyNi0wNi0wMVQwNzowOToyOS42NzVaIiwiaWF0IjoxNzQ4NzYxNzY5LCJleHAiOjIzNTM1NjE3Njl9.5H7eFyNw9K8T3-jjfXu1uGNwvHYY6NQ3w7fYGKdVYRk';
