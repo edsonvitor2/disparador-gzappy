@@ -105,7 +105,7 @@ app.post("/enviar-mensagens", async (req, res) => {
           .insert([
             {
               telefone_cliente: cliente.telefone,
-              mensagem_enviada: mensagemPersonalizada,
+              mensagem: mensagemPersonalizada,
               status: statusDisparo,
               erro: detalhesErro,
               campanha_id:campanha_id,
