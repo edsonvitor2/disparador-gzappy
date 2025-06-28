@@ -41,9 +41,8 @@ app.get("/", (req, res) => {
 app.post("/enviar-mensagens", async (req, res) => {
   try {
     console.log(req.body);
-    const { clientes, mensagem, tempo_de_disparo } = req.body;
-    console.log(req.body);
-
+    const { clientes, mensagem, tempo_de_disparo, campanha_id } = req.body;
+    
     if (!clientes || !Array.isArray(clientes)) {
       return res.status(400).json({ success: false, message: "Lista de clientes inválida" });
     }
@@ -106,9 +105,10 @@ app.post("/enviar-mensagens", async (req, res) => {
           .insert([
             {
               telefone_cliente: cliente.telefone,
-              mensagem: mensagemPersonalizada,
+              mensagem_enviada: mensagemPersonalizada,
               status: statusDisparo,
-              erro: detalhesErro
+              erro: detalhesErro,
+              campanha_id:campanha_id,
             }
           ]);
 
