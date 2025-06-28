@@ -42,7 +42,8 @@ app.post("/enviar-mensagens", async (req, res) => {
   try {
     console.log(req.body);
     const { clientes, mensagem, tempo_de_disparo } = req.body;
-    
+    console.log(req.body);
+
     if (!clientes || !Array.isArray(clientes)) {
       return res.status(400).json({ success: false, message: "Lista de clientes inválida" });
     }
